@@ -1,18 +1,18 @@
+import { useSelector } from "react-redux";
+
 const About = () => {
+  const about = useSelector(state => state.user.about);
   return (
     <div className="section about" id="next_section">
       <div className="content content-box">
         {/* image */}
         <div className="image">
-          <img src="images/man_r.jpg" alt="" />
+          <img src={about.avatarUrl} alt="avatar" />
         </div>
         {/* desc */}
         <div className="desc">
           <p>
-            Hello! I’m Daniel Curry. Web designer from USA, California, San
-            Francisco. I have rich experience in web site design and building,
-            also I am good at wordpress. I love to talk with you about our
-            unique.
+            {about.description}
           </p>
           <div className="info-list">
             <ul>
@@ -26,13 +26,13 @@ const About = () => {
                 <strong>Freelance:</strong> Available
               </li>
               <li>
-                <strong>Address:</strong> San Francisco
+                <strong>Address:</strong> {about.address}
               </li>
               <li>
-                <strong>Phone:</strong> +1 256 254 84 56
+                <strong>Phone:</strong> {about.phoneNumber}
               </li>
               <li>
-                <strong>E-mail:</strong> alejandroa@gmail.com
+                <strong>E-mail:</strong> {about.email}
               </li>
             </ul>
           </div>

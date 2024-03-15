@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import SwiperCore, {
   Autoplay,
   EffectFade,
@@ -8,6 +9,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from "swiper/react";
 SwiperCore.use([Pagination, Navigation, EffectFade, Autoplay, Grid]);
 const Testimonials = () => {
+  const testimonials = useSelector(state => state.user.testimonials);
   const props = {
     loop: true,
     spaceBetween: 70,
@@ -41,36 +43,24 @@ const Testimonials = () => {
         <div className="reviews-carousel">
           <Swiper {...props} className="swiper-container">
             <div className="swiper-wrapper">
-              <SwiperSlide className="swiper-slide">
-                <div className="reviews-item content-box">
-                  <div className="image">
-                    <img src="images/rev1.jpg" alt="" />
-                  </div>
-                  <div className="info">
-                    <div className="name">Helen Floyd</div>
-                    <div className="company">Art Director</div>
-                  </div>
-                  <div className="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="reviews-item content-box">
-                  <div className="image">
-                    <img src="images/rev1.jpg" alt="" />
-                  </div>
-                  <div className="info">
-                    <div className="name">Helen Floyd</div>
-                    <div className="company">Art Director</div>
-                  </div>
-                  <div className="text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </div>
-                </div>
-              </SwiperSlide>
+              {testimonials.map(item => {
+                return (
+                  <SwiperSlide className="swiper-slide" key={item._id}>
+                    <div className="reviews-item content-box">
+                      <div className="image">
+                        <img src={item.image.url} alt="testimonial-item-image" />
+                      </div>
+                      <div className="info">
+                        <div className="name">{item.name}</div>
+                        <div className="company">{item.position}</div>
+                      </div>
+                      <div className="text">
+                        {item.review}
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
             </div>
           </Swiper>
           {/* navigation */}

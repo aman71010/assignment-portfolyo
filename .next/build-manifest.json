@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/resume_creative": [
+    "/resume": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/resume_creative.js"
+      "static/chunks/pages/resume.js"
     ]
   },
   "ampFirstPages": []

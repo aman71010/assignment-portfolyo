@@ -1,4 +1,5 @@
 import { Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import ContentModal from "../components/popup/ContentModal";
 import ImageGallery from "../components/popup/ImageGallery";
 import ImageView from "../components/popup/ImageView";
@@ -7,13 +8,18 @@ import { cursor, stickyNav } from "../utils";
 import Footer from "./Footer";
 import Header from "./Header";
 import Preloader from "./Preloader";
+import { fetchUserData } from "../Store/user-slice";
 const Layout = ({ children, noHeader }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     cursor();
   }, []);
   useEffect(() => {
     window.addEventListener("scroll", stickyNav);
   }, []);
+  useEffect(() => {
+    dispatch(fetchUserData());
+  }, [dispatch]);
 
   return (
     <Fragment>

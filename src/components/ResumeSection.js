@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux";
+
 const ResumeSection = () => {
+  const timelines = useSelector(state => state.user.timelines);
   return (
     <div className="section resume" id="section-history">
       <div className="content">
@@ -10,6 +13,22 @@ const ResumeSection = () => {
             </div>
             {/* resume items */}
             <div className="resume-items">
+              {/* {timelines.map(item => {
+                const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                const startMonth = month_names_short[new Date(item.startDate).getMonth()];
+                const endMonth = month_names_short[new Date(item.endDate).getMonth()];
+                const startYear = new Date(item.startDate).getFullYear();
+                const endYear = new Date(item.endDate).getFullYear();
+                return (
+                  <div className="resume-item content-box" key={item._id}>
+                    <div className="date">{`${startMonth},${startYear} - ${endMonth},${endYear}`}</div>
+                    <div className="name">{`${item.jobTitle} - ${item.company_name}`}</div>
+                    <div className="text">
+                      {item.summary}
+                    </div>
+                  </div>
+                );
+              })} */}
               <div className="resume-item content-box active">
                 <div className="date">2013 - Present</div>
                 <div className="name">Art Director - Facebook Inc.</div>

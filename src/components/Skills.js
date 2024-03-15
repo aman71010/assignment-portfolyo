@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createSkillsDot, dotResize } from "../utils";
+import { useSelector } from "react-redux";
 
 export const DesignSkills = () => {
   return (
@@ -106,6 +107,7 @@ export const LanguagesSkills = () => {
 };
 
 export const CodingSkills = () => {
+  const skills = useSelector(state => state.user.skills);
   return (
     <div className="section skills" id="section-skills-code">
       <div className="content">
@@ -116,66 +118,25 @@ export const CodingSkills = () => {
         {/* skills items */}
         <div className="skills circles content-box">
           <ul>
-            <li>
-              <div className="name">WordPress</div>
-              <div className="progress p90">
-                {" "}
-                {/* p90 = 90% circle fill color */}
-                <div className="percentage">
-                  <span className="percent">90%</span>
-                </div>
-                <span>90%</span>
-                <div className="slice">
-                  <div className="bar"></div>
-                  <div className="fill"></div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="name">PHP / MYSQL</div>
-              <div className="progress p75">
-                {" "}
-                {/* p75 = 75% circle fill color */}
-                <div className="percentage">
-                  <span className="percent">75%</span>
-                </div>
-                <span>75%</span>
-                <div className="slice">
-                  <div className="bar"></div>
-                  <div className="fill"></div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="name">Angular / JavaScript</div>
-              <div className="progress p85">
-                {" "}
-                {/* p85 = 85% circle fill color */}
-                <div className="percentage">
-                  <span className="percent">85%</span>
-                </div>
-                <span>85%</span>
-                <div className="slice">
-                  <div className="bar"></div>
-                  <div className="fill"></div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="name">HTML / CSS</div>
-              <div className="progress p95">
-                {" "}
-                {/* p95 = 95% circle fill color */}
-                <div className="percentage">
-                  <span className="percent">95%</span>
-                </div>
-                <span>95%</span>
-                <div className="slice">
-                  <div className="bar"></div>
-                  <div className="fill"></div>
-                </div>
-              </div>
-            </li>
+            {skills.map(skill => {
+              return (
+                <li key={skill._id}>
+                  <div className="name">{skill.name}</div>
+                  <div className={`progress p${skill.percentage}`}>
+                    {" "}
+                    {/* p90 = 90% circle fill color */}
+                    <div className="percentage">
+                      <span className="percent">{skill.percentage}</span>
+                    </div>
+                    <span>{skill.percentage}</span>
+                    <div className="slice">
+                      <div className="bar"></div>
+                      <div className="fill"></div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
