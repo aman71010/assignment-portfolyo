@@ -5,11 +5,13 @@ import SwiperCore, {
   Navigation,
   Pagination,
 } from "swiper";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import TypingAnimation from "../src/components/TypingAnimation";
 import Layout from "../src/layout/Layout";
 SwiperCore.use([Pagination, Navigation, EffectFade, Autoplay, Grid]);
 const IndexSlider = () => {
+  const about = useSelector(state => state.user.about);
   const props = {
     init: false,
     loop: false,
@@ -91,9 +93,9 @@ const IndexSlider = () => {
           <div className="vertical-center">
             <div className="started-content">
               <h1 className="h-title">
-                Hello, I’m <strong>Alejandro Abeyta</strong>, UX/UI Designer and{" "}
-                <br />
-                Front-end Developer Based in San Francisco.
+                Hello, {`I’m`} <strong>{about.name}</strong>, {about.title}.
+                <br/>
+                Based in {about.address}.
               </h1>
               <TypingAnimation extraClassName={"h-subtitle"} />
               <span className="typed-subtitle" />

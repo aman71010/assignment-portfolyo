@@ -4,6 +4,10 @@ const About = () => {
   const about = useSelector(state => state.user.about);
   return (
     <div className="section about" id="next_section">
+      {/* title */}
+      <div className="title">
+        <div className="title_inner">About</div>
+      </div>
       <div className="content content-box">
         {/* image */}
         <div className="image">

@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import TypingAnimation from "../src/components/TypingAnimation";
 import Layout from "../src/layout/Layout";
 const IndexImage = () => {
+  const about = useSelector(state => state.user.about);
   return (
     <Layout>
       <div className="section started" id="section-started">
@@ -17,9 +19,9 @@ const IndexImage = () => {
           <div className="vertical-center">
             <div className="started-content">
               <h1 className="h-title">
-                Hello, I’m <strong>Alejandro Abeyta</strong>, UX/UI Designer and{" "}
-                <br />
-                Front-end Developer Based in San Francisco.
+                Hello, {`I’m`} <strong>{about.name}</strong>, {about.title}.
+                <br/>
+                Based in {about.address}.
               </h1>
               <TypingAnimation extraClassName={"typed-subtitle"} />
               <span className="typed-subtitle" />
