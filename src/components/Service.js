@@ -12,15 +12,33 @@ const Service = () => {
         {/* service items */}
         <div className="service-items">
           {services.map(service => {
+            const charge = service.charge.substring(1);
             return (
               <div className="service-col" key={service._id}>
                 <div className="service-item content-box">
                   <div className="icon">
-                    <span className="fas fa-code" />
+                    <img 
+                      src={service.image.url} 
+                      alt="testimonial-item-image" 
+                      style={{
+                        width: '70px', 
+                        height: '70px', 
+                        objectFit: 'cover',
+                        borderRadius: '50%'
+                      }}
+                    />
                   </div>
                   <div className="name">{service.name}</div>
                   <div className="text">
                     {service.desc}
+                  </div>
+                  <div className="pricing-item">
+                    <div className="amount">
+                      <span className="number">
+                        <span className="dollar">$</span>
+                        <span>{charge}</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
